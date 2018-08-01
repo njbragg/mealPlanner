@@ -21,9 +21,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
         //Hanlde the text field's user input through delegate callbacks
         nameTextField.delegate = self
     }
-
-    //MARK: Actions
     
+    //MARK: UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //Hide the keyboard
+        textField.resignFirstResponder()
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        mealNameLabel.text = textField.text
+    }
+    
+    //MARK: Actions
     @IBAction func setDefaultLabelText(_ sender: UIButton) {
         mealNameLabel.text = "Default Text"
     }
